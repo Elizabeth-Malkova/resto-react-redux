@@ -21,6 +21,21 @@
         object-fit: cover;
         margin-bottom: 20px;
     }
+    &__img_pizza {
+        background: url("/pizza.jpeg");
+        width: 100px; 
+        height: 100px;
+    }
+    &__img_salads {
+        background: url("/salads.jpeg");
+        width: 100px; 
+        height: 100px;
+    }
+    &__img_meat {
+        background: url("/meat.jpeg");
+        width: 100px; 
+        height: 100px;
+    }
     &__category, &__price {
         font-size: 18px;
         font-weight: 300;
