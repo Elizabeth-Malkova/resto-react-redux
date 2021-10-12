@@ -17,4 +17,11 @@ const AppHeader = ({total}) => {
         </header>
     )
 };
-export default AppHeader;
+
+const mapStateToProps = ({totalSum})=>{
+
+    return{
+        total: totalSum
+    }
+};
+export default connect(mapStateToProps)(AppHeader);
