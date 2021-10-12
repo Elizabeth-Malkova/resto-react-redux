@@ -4,7 +4,7 @@ const initialState = {
     error: true,
     items: [],
     dish: null,
-    totalSum: 0
+    totalSum: 0,
 };
 //свойство тайп обьекта акшен говорит о том какое действие пришло
 const reducer = (state = initialState, action) => {
@@ -71,15 +71,24 @@ const reducer = (state = initialState, action) => {
         case 'ITEM_REMOVE_FROM_CART':
             const idx = action.payload;
             const itemIndex = state.items.findIndex(item => item.id === idx);
+ 
+        const resultDel=(items)=>{
+            const totalSum = items.reduce((prevValue,currentValue)=>{
+                return (prevValue+currentValue.price*currentValue.counter)  
+            },0);
+            return totalSum
+        };
+
+        const items = [
+            ...state.items.slice(0,itemIndex),
+            ...state.items.slice(itemIndex+1),
+        ]
+        const totalSumDel=resultDel(items);
             return {
                 ...state,
-                items:[
-                    ...state.items.slice(0,itemIndex),
-                    ...state.items.slice(itemIndex+1),
-                ]
+                items,
+                totalSum:totalSumDel
             };
-    
-                        
 
         default:
             return state;
