@@ -15,5 +15,16 @@ export default class RestoService{
     async getMenuDish(id){
         return await this.getResource(`/menu/${id}`)
     }
+    async postResource(data){
+        const resPost = await fetch(`${this._apiBase}/orders `,{
+            method:'POST',
+            headers: {'content-type': 'application/json'},
+            body:JSON.stringify(data),
+        });
 
+        if (!resPost.ok){
+            throw new Error(`Could not fetch, received ${resPost.status}`);
+        }
+        return await resPost.json();
+    };
 };

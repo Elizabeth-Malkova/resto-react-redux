@@ -9,7 +9,7 @@ import Error from '../error';
 class MenuItemDetails extends Component {
     componentDidMount(){
         console.log(this.props);
-        const { dishId  }=this.props;
+        const {dishId}=this.props;
         this.props.menuRequested();
         const {RestoService} = this.props;
         RestoService.getMenuDish(dishId)
